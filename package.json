@@ -1,0 +1,27 @@
+{
+  "name": "newsletter",
+  "version": "1.0.0",
+  "description": "Simple newsletter app with mailchip",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "morgan",
+    "request",
+    "body-parser"
+  ],
+  "author": "Uzaif Nilger",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "hbs": "^4.0.1",
+    "morgan": "^1.9.0",
+    "request": "^2.83.0"
+  }
+}
