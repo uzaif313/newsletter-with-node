@@ -14,6 +14,10 @@ const port = 8000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
+
+// static asset middleware
+app.use(express.static(__dirname+"/public"))
+
 // setup template engine
 app.engine('.hbs', expressHbs({defaultLayout:'application',extname:'.hbs'}))
 app.set('view engine', 'hbs')
