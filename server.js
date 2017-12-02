@@ -10,6 +10,10 @@ const app  = express()
 //Setup port no
 const port = 8000
 
+// mailchimp list_id
+const mailchimp_list_id = "a1eb31c2dd"
+const mailchimp_api_key = "c6354dbb8346f92cbaf7902e91220b47-us17"
+const list_end_point = `https://u3.api.mailchimp.com/3.0/lists/${mailchimp_list_id}/members`
 // body parser middleware setup for read form data
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
@@ -25,10 +29,14 @@ app.set('view engine', 'hbs')
 // morgan middleware setup inspect log
 app.use(morgan("dev"))
 
-app.get("/",(req ,res, next) => {
-  res.render("main/home")
-})
-
+app.route("/")
+    .post((req, res, next) => {
+      console.log(req.body.email)
+    })
+    .get((req, res, next) => {
+      console.log("test")
+      res.render("main/home")
+    })
 app.listen(port,(err)=>{
   if (err) {
     console.log(err)
