@@ -4,6 +4,10 @@ const async = require('async');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const expressHbs = require('express-handlebars');
+const session = require("express-session")
+const MongoStore = require("connect-mongo")(session)
+const flash = require("express-flash")
+
 //create express app
 const app  = express()
 
