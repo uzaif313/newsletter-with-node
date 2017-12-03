@@ -13,7 +13,7 @@ const port = 8000
 // mailchimp list_id
 const mailchimp_list_id = "a1eb31c2dd"
 const mailchimp_api_key = "c6354dbb8346f92cbaf7902e91220b47-us17"
-const list_end_point = `https://u3.api.mailchimp.com/3.0/lists/${mailchimp_list_id}/members`
+const list_end_point = `https://us17.api.mailchimp.com/3.0/lists/${mailchimp_list_id}/members`
 // body parser middleware setup for read form data
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
@@ -31,9 +31,30 @@ app.use(morgan("dev"))
 
 app.route("/")
     .post((req, res, next) => {
-      console.log(req.body.email)
+      console.log(list_end_point)
+      // console.log(req.body.email)
+      request({
+        url:list_end_point,
+        method:"POST",
+        headers:{
+          "Authorization": `randomUser ${mailchimp_api_key}`,
+          "Content-Type": "application/json"
+        },
+        json:{
+          'email_address':req.body.email,
+          'status':"subscribed"
+        }
+      },function(err,response,body){
+        if (err) {
+          console.log(err);
+        }else{
+          console.log("Successfully sent")
+          res.redirect("/")
+        }
+      })
     })
     .get((req, res, next) => {
+
       console.log("test")
       res.render("main/home")
     })
