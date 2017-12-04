@@ -6,6 +6,11 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <div class="alert alert-info">
+      {{#if message}}
+        {{message}}
+      {{/if}}
+    </div>
     <form method="post">
       <div class="form-group">
         <label for="email">Email</label>
